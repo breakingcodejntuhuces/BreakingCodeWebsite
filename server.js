@@ -5,6 +5,7 @@ require('dotenv').config();
 const cors = require('cors');
 const path = require('path');
 const multer = require('multer');
+const ImageKit = require('imagekit');
 const Registration = require('./models/Registration');
 
 const app = express();
@@ -17,24 +18,29 @@ app.use(express.urlencoded({ extended: true }));
 
 // Serve static files from the root directory
 app.use(express.static(path.join(__dirname)));
-app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
 
-// Multer Setup
-const storage = multer.diskStorage({
-  destination: function (req, file, cb) {
-    cb(null, 'uploads/')
-  },
-  filename: function (req, file, cb) {
-    const uniqueSuffix = Date.now() + '-' + Math.round(Math.random() * 1E9)
-    cb(null, uniqueSuffix + path.extname(file.originalname))
-  }
-});
+// ImageKit Initialization (requires env vars)
+let imagekit;
+if (process.env.IMAGEKIT_PUBLIC_KEY && process.env.IMAGEKIT_PRIVATE_KEY && process.env.IMAGEKIT_URL_ENDPOINT) {
+  imagekit = new ImageKit({
+    publicKey: process.env.IMAGEKIT_PUBLIC_KEY,
+    privateKey: process.env.IMAGEKIT_PRIVATE_KEY,
+    urlEndpoint: process.env.IMAGEKIT_URL_ENDPOINT
+  });
+}
+
+// Multer Memory Storage (Required for Vercel since disk writing is not permitted)
+const storage = multer.memoryStorage();
 const upload = multer({ storage: storage });
 
 // MongoDB Connection
-mongoose.connect(process.env.MONGO_URI)
-.then(() => console.log('Connected to MongoDB!'))
-.catch(err => console.error('Failed to connect to MongoDB:', err));
+if (process.env.MONGO_URI) {
+  mongoose.connect(process.env.MONGO_URI)
+    .then(() => console.log('Connected to MongoDB!'))
+    .catch(err => console.error('Failed to connect to MongoDB:', err));
+} else {
+  console.warn('WARNING: MONGO_URI is not defined. Database operations will fail.');
+}
 
 // API Endpoint for Registration
 app.post('/api/register', upload.single('photo'), async (req, res) => {
@@ -46,7 +52,26 @@ app.post('/api/register', upload.single('photo'), async (req, res) => {
       return res.status(400).json({ error: 'All fields are required' });
     }
 
-    const photoPath = req.file ? `/uploads/${req.file.filename}` : null;
+    let photoPath = null;
+    
+    // If a photo was uploaded, push it to ImageKit
+    if (req.file) {
+      if (!imagekit) {
+         console.warn('ImageKit credentials missing, skipping photo upload.');
+      } else {
+        try {
+          const uploadResponse = await imagekit.upload({
+            file: req.file.buffer.toString('base64'),
+            fileName: `member-${rollNo.replace(/[^a-zA-Z0-9]/g, '')}-${Date.now()}${path.extname(req.file.originalname)}`,
+            folder: '/breakingcode_members'
+          });
+          photoPath = uploadResponse.url; // Save the cloud URL directly
+        } catch (uploadErr) {
+          console.error('ImageKit upload error:', uploadErr);
+          return res.status(500).json({ error: 'Failed to upload photo to the cloud.' });
+        }
+      }
+    }
 
     const newRegistration = new Registration({
       fullName,
@@ -68,6 +93,12 @@ app.post('/api/register', upload.single('photo'), async (req, res) => {
   }
 });
 
-app.listen(PORT, () => {
-  console.log(`Server running on http://localhost:${PORT}`);
-});
+// For local testing (Vercel will ignore this in production if configured correctly, but checking NODE_ENV is safer)
+if (process.env.NODE_ENV !== 'production') {
+  app.listen(PORT, () => {
+    console.log(`Server running on http://localhost:${PORT}`);
+  });
+}
+
+// Export for Vercel serverless functions
+module.exports = app;
