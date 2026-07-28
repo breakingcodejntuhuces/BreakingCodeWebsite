@@ -1,0 +1,28 @@
+{
+  "name": "breakingcodeweb",
+  "version": "1.0.0",
+  "description": "**The official website for Breaking Code, the Competitive Programming & Development Club of JNTUH UCES.**",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/breakingcodejntuhuces/BreakingCodeWebsite2026.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/breakingcodejntuhuces/BreakingCodeWebsite2026/issues"
+  },
+  "homepage": "https://github.com/breakingcodejntuhuces/BreakingCodeWebsite2026#readme",
+  "dependencies": {
+    "cors": "^2.8.6",
+    "dotenv": "^17.4.2",
+    "express": "^5.2.1",
+    "mongoose": "^9.8.0",
+    "multer": "^2.2.0"
+  }
+}

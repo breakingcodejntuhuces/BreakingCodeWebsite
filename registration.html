@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Register | Breaking Code JNTUH UCES</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <!-- Navbar -->
+  <nav class="navbar" id="navbar">
+    <div class="nav-container">
+      <div class="logo">
+        <img src="assets/images/logo new.jpeg" width="50px" alt="">
+        <a href="index.html" class="nav-logo">
+          Breaking Code JNTUH UCES
+        </a>
+      </div>
+      <a href="index.html" class="nav-btn">Back to Home</a>
+    </div>
+  </nav>
+
+  <section class="reg-section">
+    <div class="reg-container">
+      <div class="reg-content">
+        <div class="reg-form-col">
+          <div class="section-header" style="text-align: left; margin-bottom: 24px;">
+            <span class="section-tag">Join Us</span>
+            <h2 class="section-heading">Membership Registration</h2>
+            <p class="section-sub" style="width: auto;">Become a part of Breaking Code Club.</p>
+          </div>
+          
+          <form id="registrationForm" class="reg-form">
+            <div class="form-group">
+              <label class="form-label" for="fullName">Full Name</label>
+              <input class="form-input" type="text" id="fullName" name="fullName" required placeholder="Full Name">
+            </div>
+            
+            <div class="form-group">
+              <label class="form-label" for="rollNo">Roll No</label>
+              <input class="form-input" type="text" id="rollNo" name="rollNo" required placeholder="25SS1AXXXX">
+            </div>
+            
+            <div class="form-group">
+              <label class="form-label" for="email">Your Email</label>
+              <input class="form-input" type="email" id="email" name="email" required placeholder="example@gmail.com">
+            </div>
+            
+            <div class="form-row">
+              <div class="form-group">
+                <label class="form-label" for="currentYear">Current Year</label>
+                <select class="form-input" id="currentYear" name="currentYear" required>
+                  <option value="" disabled selected>Select Year</option>
+                  <option value="1">1st Year</option>
+                  <option value="2">2nd Year</option>
+                  <option value="3">3rd Year</option>
+                  <option value="4">4th Year</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label class="form-label" for="graduationYear">Year of Graduation</label>
+                <select class="form-input" id="graduationYear" name="graduationYear" required>
+                  <option value="" disabled selected>Select Year</option>
+                  <option value="2027">2027</option>
+                  <option value="2028">2028</option>
+                  <option value="2029">2029</option>
+                  <option value="2030">2030</option>
+                </select>
+              </div>
+            </div>
+            
+            <div class="form-group">
+              <label class="form-label" for="branch">Branch</label>
+              <select class="form-input" id="branch" name="branch" required>
+                <option value="" disabled selected>Select Branch</option>
+                <option value="CSE">CSE</option>
+                <option value="CSE">CSE-SF</option>
+                <option value="CSE (AI & ML)">CSE (AI & ML)</option>
+                <option value="CSE (Cyber Security)">CSE (Cyber Security)</option>
+                <option value="ECE">ECE</option>
+                <option value="EEE">EEE</option>
+                <option value="Mechanical">Mechanical</option>
+                <option value="Civil">Civil</option>
+              </select>
+            </div>
+            
+            <div class="form-group">
+              <label class="form-label" for="phone">Ph-No (WhatsApp)</label>
+              <input class="form-input" type="tel" id="phone" name="phone" required placeholder="+91 9876543210">
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" for="photo">Profile Photo (Optional)</label>
+              <input class="form-input" type="file" id="photo" name="photo" accept="image/*" style="padding: 7px 14px; background: transparent; border: none; cursor: pointer;">
+            </div>
+            
+            <div style="display: flex; flex-direction: column; gap: 4px; margin-top: 12px; align-items: center;">
+              <button type="submit" class="hero-btn-primary" id="regSubmitBtn" style="width: 100%; font-size: 1rem;">Register Now</button>
+              <span class="limited-offer-badge">Limited time: <strike>₹99/mo</strike> <strong>₹0</strong></span>
+            </div>
+            <div id="regError" class="reg-error" style="display: none; color: red; margin-top: 12px; font-size: 0.85rem;"></div>
+          </form>
+        </div>
+        
+        <div class="reg-card-col">
+          <div class="membership-card-wrapper">
+            <img src="assets/images/mem_card.png" alt="Example Membership Card" style="width: 100%; border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.05);">
+            <p class="mc-note">
+              <strong>Note:</strong> You will get your membership card to your email within 24-hours of registration.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="footer-container">
+      <p class="footer-bottom">&copy; 2026 Breaking Code · JNTUH UCES</p>
+    </div>
+  </footer>
+
+  <script src="js/registration.js"></script>
+</body>
+</html>
