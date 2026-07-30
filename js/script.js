@@ -39,7 +39,7 @@ const teamData = [
   { name: 'C. MOKSHITA REDDY', role: 'Event Head', linkedin: '#', email: 'mokshita@example.com', photo: 'assets/images/team_placeholder.png' },
   { name: 'SK. SAMEENA YASMIN', role: 'Coordinator', linkedin: 'https://www.linkedin.com/in/sameena-yasmin-421734325', email: 'yasminsameena600@gmail.com', photo: 'assets/images/team_placeholder.png' },
   { name: 'CH. VENKATA SIVA SAI', role: 'Coordinator', linkedin: 'https://www.linkedin.com/in/venkatasivasai-chilakala-854698268?utm_source=share_via&utm_content=profile&utm_medium=member_android', email: 'chilakalavenkatasivasai@gmail.com', photo: 'assets/images/team_placeholder.png' },
-  { name: 'B. GOVARDHAN', role: 'Coordinator', linkedin: '#', email: 'govardhan@example.com', photo: 'assets/images/team_placeholder.png' },
+  { name: 'B. GOVARDHAN', role: 'Coordinator', linkedin: 'https://www.linkedin.com/in/govardhan-bathula-829157358/', email: 'govardhanbathula555@gmail.com', photo: 'assets/images/team_placeholder.png' },
   { name: 'U. AKSHAYA', role: 'Coordinator', linkedin: 'https://www.linkedin.com/in/akshaya-udutha-008481376', email: 'akshayaudutha25@gmail.com', photo: 'assets/images/team_placeholder.png' },
   { name: 'M. SAI CHARAN', role: 'Coordinator', linkedin: 'https://www.linkedin.com/in/sai-charan-mallam-92b927358?utm_source=share_via&utm_content=profile&utm_medium=member_android', email: 'mallamsaicharan002@gmail.com', photo: 'assets/images/team_placeholder.png' },
   { name: 'A. MAHAVAISHNAVI', role: 'Coordinator', linkedin: '#', email: 'mahavaishnavi@example.com', photo: 'assets/images/team_placeholder.png' },
