@@ -22,8 +22,8 @@ document.addEventListener('DOMContentLoaded', function() {
         const result = await response.json();
 
         if (response.ok) {
-          // Success, redirect to thank you page with some params for the card
-          window.location.href = `thankyou.html?name=${encodeURIComponent(formData.get('fullName'))}&roll=${encodeURIComponent(formData.get('rollNo'))}&branch=${encodeURIComponent(formData.get('branch'))}`;
+          // Success, redirect to thank you page
+          window.location.href = `thankyou.html`;
         } else {
           // Show error
           errorDiv.textContent = result.error || 'Registration failed. Please try again.';
