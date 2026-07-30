@@ -27,7 +27,7 @@ const eventsData = [
 ];
 
 const teamData = [
-  { name: 'Y. ABHISHEK', role: 'Club Lead', linkedin: 'hhttps://www.linkedin.com/in/iyg999a/', email: 'abhishekyadugani@gmail.com', photo: '' },
+  { name: 'Y. ABHISHEK', role: 'Club Lead', linkedin: 'https://www.linkedin.com/in/iyg999a/', email: 'abhishekyadugani@gmail.com', photo: '' },
   { name: 'D. SHIVAKUMAR REDDY', role: 'Club Lead', linkedin: 'https://www.linkedin.com/in/shivakumar-reddy-dommata/', email: 'shivareddydmt7989@gmail.com', photo: 'assets/people/file.jpg' },
   { name: 'M. VISHAL', role: 'Marketing Head', linkedin: '#', email: 'vishal@example.com', photo: 'assets/images/team_placeholder.png' },
   { name: 'B. NIKHIL', role: 'Marketing Head', linkedin: 'https://www.linkedin.com/in/nikhil-boddepalli-a342b1391?utm_source=share_via&utm_content=profile&utm_medium=member_android', email: 'bnikhil2103@gmail.com', photo: 'assets/images/team_placeholder.png' },
